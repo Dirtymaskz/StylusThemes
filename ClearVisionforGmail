@@ -1,0 +1,216 @@
+/* ==UserStyle==
+@name           ClearVision Gmail (v 1.2.0)
+@version        1.2.0
+@description    ClearVision V7 dark‑glass theme for Gmail
+@author         ClearVision Team • Gmail port by dirtymaskz
+@homepageURL    https://clearvision.github.io
+@supportURL     https://github.com/ClearVision/ClearVision-v7
+@preprocessor   default
+@match          *://mail.google.com/*
+==/UserStyle== */
+
+/*──────────────────────────────────────────────
+  0. VARIABLES
+──────────────────────────────────────────────*/
+:root{
+  --main-color:   #2780e6;
+  --hover-color:  #1e63b3;
+  --success-color:#43b581;
+  --danger-color: #982929;
+
+  --bg-shade:     rgba(0,0,0,.55);
+  --text-primary: #e4e4ea;
+  --text-muted:   #bbbbcd;
+
+  --font-main:"gg sans","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  --font-code:Consolas,"gg mono","Liberation Mono",Menlo,Courier,monospace;
+}
+
+/*──────────────────────────────────────────────
+  1. BASE & BACKDROP
+──────────────────────────────────────────────*/
+html,body{
+  height:100%!important;margin:0!important;
+  font-family:var(--font-main)!important;
+  color:var(--text-primary)!important;
+  background:#0e0e0f!important;
+}
+body::before{
+  content:"";
+  position:fixed;inset:0;pointer-events:none;
+  background:var(--bg-shade);
+  backdrop-filter:saturate(1.1) blur(2px);
+  z-index:-1;
+}
+
+/*──────────────────────────────────────────────
+  2. GLOBAL RESET (strip Gmail white panels)
+──────────────────────────────────────────────*/
+.nH,.aeF,.aeF>.aDP,.aeN,
+[role="navigation"],[role="main"],[role="dialog"],
+.gb_Se,.aFr,.G-atb,.aic,
+.kr5Eud,.BltHke.nH.oy8Mbf{
+  background:transparent!important;
+  color:inherit!important;
+}
+
+/*──────────────────────────────────────────────
+  3. TOP/LEFT UI
+──────────────────────────────────────────────*/
+/*** top search bar ***/
+.aFr,.gb_Se{
+  backdrop-filter:blur(4px) saturate(1);
+  background:rgba(0,0,0,.25)!important;
+  border-bottom:1px solid rgba(255,255,255,.05)!important;
+}
+/*** message action bar ***/
+.G-atb{
+  background:transparent!important;
+  border-bottom:1px solid rgba(255,255,255,.05)!important;
+}
+.G-atb .T-I{color:var(--main-color)!important;}
+.G-atb .T-I:hover{background:rgba(39,128,230,.15)!important;}
+.G-atb .T-I[aria-pressed="true"]{background:var(--main-color)!important;color:#fff!important;}
+
+/*** compose footer ***/
+.aDh{
+  backdrop-filter:blur(6px) saturate(1);
+  background:transparent!important;
+  border-top:1px solid rgba(255,255,255,.05)!important;
+}
+.aDh .ar8,.aDh .aaq{color:var(--main-color)!important;}
+.aDh .ar8:hover,.aDh .aaq:hover{background:rgba(39,128,230,.18)!important;}
+
+/*** left nav ***/
+.aeN,[role="navigation"] .TN.bzz.aHS{
+  background:transparent!important;
+  backdrop-filter:blur(10px) saturate(1.4);
+}
+.TO .aim{background:rgba(39,128,230,.25)!important;color:#fff!important;}
+.aim:hover{background:rgba(255,255,255,.08)!important;}
+
+/*** compose button ***/
+.T-I.T-I-KE.L3,.T-I.T-I-KE{
+  background:var(--main-color)!important;color:#fff!important;
+  border:none!important;box-shadow:0 2px 4px rgba(0,0,0,.25)!important;
+}
+.T-I.T-I-KE:hover{background:var(--hover-color)!important;}
+
+/*──────────────────────────────────────────────
+  4. INBOX ROWS
+──────────────────────────────────────────────*/
+tr.zA{background:rgba(0,0,0,.15)!important;}
+tr.zA:hover{background:rgba(0,0,0,.25)!important;}
+tr.zA[aria-selected="true"]{background:rgba(39,128,230,.35)!important;}
+tr.zE .y6 span[id],tr.zE .bqe{color:#fff!important;font-weight:600!important;}
+.yW,.y2{color:var(--text-muted)!important;}
+
+/*──────────────────────────────────────────────
+  5. MESSAGE VIEW / BODY
+──────────────────────────────────────────────*/
+.adn.ads,
+.ii.gt,.ii.gt .a3s,
+.a3s.aiL,.a3s.aiL *,
+[class*="msg"],[class*="msg"] *{
+  background:transparent!important;
+  color:var(--text-primary)!important;
+}
+
+/* strip white/grey inlined backgrounds */
+.ii.gt .a3s *[bgcolor i],
+.ii.gt .a3s *[style*="background" i],
+.ii.gt .a3s *[style*="rgb(255, 255, 255)" i]{
+  background:transparent!important;
+}
+
+/* dynamic “mail-wrapper” blocks */
+div[class$="mail-wrapper"],
+div[class$="mail-wrapper"] *{
+  background:transparent!important;
+  color:var(--text-primary)!important;
+}
+
+/* tables – no borders */
+.ii.gt table,.a3s.aiL table,[class*="msg"] table{
+  border:none!important;border-collapse:collapse!important;
+}
+.ii.gt table td,.ii.gt table th,
+.a3s.aiL table td,.a3s.aiL table th,
+[class*="msg"] table td,[class*="msg"] table th{
+  border:1px solid transparent!important;
+  background:transparent!important;
+}
+
+/* links */
+.a3s a{color:var(--main-color)!important;}
+
+/*──────────────────────────────────────────────
+  6. REPLY / FORWARD FOOTER
+──────────────────────────────────────────────*/
+.amn,.ajA,.ajB,.ajC,.amr,
+.ip,.iq,
+.amn>div,.ajA>div,.ajB>div,.ajC>div,.amr>div,
+.ip>div,.iq>div{
+  background:transparent!important;
+  border-top:1px solid rgba(255,255,255,.05)!important;
+}
+.amn .ams,.ajA .ams,.ajB .ams,.ajC .ams,.amr .ams,
+.ip .ams,.iq .ams,
+.amn .ams span,.ajA .ams span,.ajB .ams span,.ajC .ams span,.amr .ams span,
+.ip .ams span,.iq .ams span{
+  color:var(--main-color)!important;fill:var(--main-color)!important;
+}
+.amn .ams:hover,.ajA .ams:hover,.ajB .ams:hover,.ajC .ams:hover,
+.amr .ams:hover,.ip .ams:hover,.iq .ams:hover{
+  background:rgba(39,128,230,.18)!important;
+}
+
+/*──────────────────────────────────────────────
+  7. COLLAPSED THREAD HEADER
+──────────────────────────────────────────────*/
+.gE{background:transparent!important;color:var(--text-primary)!important;}
+.gE .hP{color:var(--text-primary)!important;font-weight:600!important;} /* subject */
+.gE .y2,.gE .y2 *,.gE .g3{color:var(--text-muted)!important;}          /* snippet & date */
+.gE .gD span{color:var(--text-primary)!important;}                      /* sender (white) */
+
+/* open‑mail main subject */
+.hP{color:var(--text-primary)!important;font-weight:600!important;}
+
+/*──────────────────────────────────────────────
+  8. MARKETING HEADERS
+──────────────────────────────────────────────*/
+h3.iw, h3.iw *, .gfxsud, .gfxsud *,.qu,.qu *{
+  color:var(--text-primary)!important;
+  background:transparent!important;
+}
+table.cf.gJ,
+table.cf.gJ *,      /* everything inside that wrapper          */
+td.gf.gK,
+td.gf.gK *,         /* nested td that holds the message         */
+.iA.g6,
+.iA.g6 *            /* actual span/gridcell with the text       */
+{
+  color: var(--text-muted) !important;
+  background: transparent       !important;
+}
+
+
+/*──────────────────────────────────────────────
+  9. SCROLLBARS
+──────────────────────────────────────────────*/
+::-webkit-scrollbar{width:8px;height:8px;}
+::-webkit-scrollbar-track{background:transparent;}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,.15);border-radius:4px;}
+::-webkit-scrollbar-thumb:hover{background:var(--main-color);}
+
+/*──────────────────────────────────────────────
+ 10. CLEAN‑UPS
+──────────────────────────────────────────────*/
+[role="complementary"],.nH[style*="ads"],.kr5Eud{display:none!important;}
+
+body>div[role="tooltip"]{
+  background:rgba(0,0,0,.9)!important;
+  color:#fff!important;
+  border-radius:6px!important;
+  padding:6px 10px!important;
+}
